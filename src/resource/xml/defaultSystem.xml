@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system>
+	<modules>
+		<module name = "ROM" startAddress = "0x0000" type = "rom" >
+			<options size="0x1000"/>
+		</module>
+		<module name = "RAM" startAddress = "0x1000" type = "ram" >
+			<options size="0x1000"/>
+		</module>
+		<module name = "Led" startAddress = "0x2000" type = "led" />
+		<module name = "UART" startAddress = "0x2010" type = "uart" irqID="1">
+			<options delay="50"/>
+		</module>
+		<module name = "Timer" startAddress = "0x2020" type = "timer" irqID="0"/>
+		<module name = "Button" startAddress = "0x2030" type = "button" irqID="2"/>
+	</modules>
+	<text moduleName="ROM" interruptOffset="4"/>
+	<data moduleName="RAM" offset="0"/>
+</system>

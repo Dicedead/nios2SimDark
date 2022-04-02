@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="system" type="systemType">
+		<xs:key name="moduleID">
+			<xs:selector xpath="./modules/module"/>
+			<xs:field xpath="@name"/>
+		</xs:key>
+		<xs:keyref name="textREF" refer="moduleID">
+			<xs:selector xpath="./text"/>
+			<xs:field xpath="@moduleName"/>
+		</xs:keyref>
+		<xs:keyref name="dataREF" refer="moduleID">
+			<xs:selector xpath="./data"/>
+			<xs:field xpath="@moduleName"/>
+		</xs:keyref>
+		<xs:unique name="irqNb">
+			<xs:selector xpath="./modules/module"/>
+			<xs:field xpath="@irqID"/>
+		</xs:unique>
+	</xs:element>
+
+	<xs:complexType name="systemType">
+		<xs:all>
+			<xs:element name="modules" type="modulesType" minOccurs="1" />
+			<xs:element name="text" type="textType" minOccurs="1" />
+			<xs:element name="data" type="dataType" minOccurs="0" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="modulesType">
+		<xs:sequence>
+			<xs:element name="module" type="moduleType" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="moduleType">
+		<xs:sequence>
+			<xs:element name="options" type="optionsType" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:NCName" use="required" />
+		<xs:attribute name="startAddress" type="xs:string" use="required" />
+		<xs:attribute name="type" type="xs:string" use="required" />
+		<xs:attribute name="irqID" type="irqID" use="optional" />
+	</xs:complexType>
+
+	<xs:complexType name="textType">
+		<xs:attribute name="moduleName" type="xs:NCName" use="required" />
+		<xs:attribute name="offset" type="xs:string" default="0" />
+		<xs:attribute name="interruptOffset" type="xs:string" default="4" />
+	</xs:complexType>
+
+	<xs:complexType name="dataType">
+	<xs:attribute name="moduleName" type="xs:NCName" use="required" />
+	<xs:attribute name="offset" type="xs:string" default="0" />
+	</xs:complexType>
+
+	<xs:complexType name="optionsType">
+		<xs:anyAttribute processContents="skip" />
+	</xs:complexType>
+	
+	<xs:simpleType name="irqID">
+	  <xs:restriction base="xs:integer">
+    		<xs:minInclusive value="0"/>
+    		<xs:maxInclusive value="31"/>
+  		</xs:restriction>
+	</xs:simpleType>
+	
+</xs:schema>
