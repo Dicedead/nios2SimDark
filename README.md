@@ -3,6 +3,8 @@
 This is **Nios2Sim in dark mode!**
 It's not perfect but it's here. Feel free to contribute and submit your pull requests.
 
+![preview](https://github.com/Dicedead/nios2SimDark/blob/main/preview.jpg)
+
 # How to use this:
 There are two ways:
 ## 1) Simply download the provided JAR and start working.
