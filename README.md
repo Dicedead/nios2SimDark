@@ -8,7 +8,7 @@ It's not perfect but it's here. Feel free to contribute and submit your pull req
 # How to use this:
 There are two ways:
 ## 1) Simply download the provided JAR and start working.
-Easy but, as for now, this will restrict you to the theme arbitrarily chosen by myself.
+Easy but, as for now, this will restrict you to the theme arbitrarily chosen by myself. [Click here to download.](https://github.com/Dicedead/nios2SimDark/raw/main/Nios2SimDark.jar)
 ## 2) If you want to edit the colors: 
 Clone this repo, and edit these 4 lines in ``Nios2SimFrame`` in the package ``gui`` as you see fit:
 ```java
